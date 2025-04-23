@@ -20,5 +20,15 @@ pipeline {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/JEEJY30/complete-prodcution-e2e-pipeline' 
             }
         }
+        stage('Build Application') {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+        stage('Test Uplication') {
+            steps {
+                sh "mvn test"
+            }
+        }
     }
 }
