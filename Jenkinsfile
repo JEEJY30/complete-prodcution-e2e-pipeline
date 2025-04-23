@@ -32,7 +32,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                withSonarQuebeEnv(credentialsId: "sonarqube-token"){
+                withSonarQubeEnv(credentialsId: "sonarqube-token"){
                     sh "mvn sonar:sonar"
                 }
             }
