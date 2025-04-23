@@ -17,12 +17,7 @@ pipeline {
         }
         stage('Checkout from SCM') {
             steps {
-                git branch: 'main', credentialsId: 'github' url: 'https://github.com/JEEJY30/complete-prodcution-e2e-pipeline' 
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/JEEJY30/complete-prodcution-e2e-pipeline' 
             }
         }
     }
