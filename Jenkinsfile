@@ -29,19 +29,25 @@ pipeline {
         }
         stage('Build Application') {
             steps {
-                sh "mvn clean package"
+                sh '''
+                    mvn clean package
+                '''
             }
         }
         stage('Test Uplication') {
             steps {
-                sh "mvn test"
+                sh '''
+                    mvn test
+                '''
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 script{
                     withSonarQubeEnv(credentialsId: "sonarqube-token"){
-                        sh "mvn sonar:sonar"
+                        sh '''
+                            mvn sonar:sonar
+                            '''
                     }
                 }
             }
@@ -69,7 +75,7 @@ pipeline {
         stage('Trigger CD Pipeline') {
             steps {
                 withCredentials([string(credentialsId: 'jenkins-api-token', variable: 'TOKEN')]) {
-                   sh(script: '''
+                   sh('''
                         set +x
                         curl -v -k --user admin:$TOKEN \
                             -X POST \
