@@ -69,12 +69,13 @@ pipeline {
         stage('Trigger CD Pipeline') {
             steps {
                 withCredentials([string(credentialsId: 'jenkins-api-token', variable: 'TOKEN')]) {
-                    sh(script: '''
+                   sh(script: '''
+                        set +x
                         curl -v -k --user admin:$TOKEN \
                             -X POST \
                             -H 'cache-control: no-cache' \
                             -H 'content-type: application/www-form-urlencoded' \
-                            --data IMAGE_TAG="${IMAGE_TAG}" \
+                            --data "IMAGE_TAG=$IMAGE_TAG" \
                             "https://jenkins.jeejy.org/job/GitOps-pipeline/buildWithParameters?token=gitops-token"
                     ''', shell: '/bin/bash')
                 }
