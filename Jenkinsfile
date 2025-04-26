@@ -77,7 +77,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'jenkins-api-token', variable: 'TOKEN')]) {
                    sh (script:'''
                         set +x
-                        curl -v -k --user admin:$TOKEN \
+                        curl -v -k --user admin:\$TOKEN \
                             -X POST \
                             -H 'cache-control: no-cache' \
                             -H 'content-type: application/www-form-urlencoded' \
