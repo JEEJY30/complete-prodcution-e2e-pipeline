@@ -75,7 +75,7 @@ pipeline {
         stage('Trigger CD Pipeline') {
             steps {
                 withCredentials([string(credentialsId: 'jenkins-api-token', variable: 'TOKEN')]) {
-                   sh'''
+                   sh '''
                         set +x
                         curl -v -k --user admin:$TOKEN \
                             -X POST \
