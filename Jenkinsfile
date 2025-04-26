@@ -82,7 +82,7 @@ pipeline {
                             -H 'cache-control: no-cache' \
                             -H 'content-type: application/www-form-urlencoded' \
                             --data "IMAGE_TAG=$IMAGE_TAG" \
-                            "https://jenkins.jeejy.org/job/GitOps-pipeline/buildWithParameters?token=gitops-token"
+                            "http://jenkins.jeejy.org/job/GitOps-pipeline/buildWithParameters?token=gitops-token"
                     ''')
                 }
             }
