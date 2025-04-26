@@ -15,7 +15,7 @@ pipeline {
         DOCKER_PASS = "dockerhub"
         IMAGE_NAME = "${DOCKER_USER}"+"/"+"${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
-        JENKINS_API_TOKEN = credentials('jenkins-api-token')
+        JENKINS_API_TOKEN = credentials('JENKINS_API_TOKEN')
     }
     stages {
         stage('Clean up workspace') {
@@ -75,7 +75,6 @@ pipeline {
         }
         stage('Trigger CD Pipeline') {
             steps {
-                   echo "Token length: ${JENKINS_API_TOKEN.length()}"
                    sh (script:'''
                         set +x
                         curl -v -k --user admin:$JENKINS_API_TOKEN \
