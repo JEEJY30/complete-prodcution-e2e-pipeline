@@ -75,7 +75,7 @@ pipeline {
         }
         stage('Trigger CD Pipeline') {
             steps {
-                
+                   echo "Token length: ${JENKINS_API_TOKEN.length()}"
                    sh (script:'''
                         set +x
                         curl -v -k --user admin:$JENKINS_API_TOKEN \
